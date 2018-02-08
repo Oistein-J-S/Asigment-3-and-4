@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Asignment_3
 {
-    class fileReader
+    class FileReader
     {
         List<String> result = new List<String>();
         public List<String> readFile(String filename)
@@ -20,15 +20,15 @@ namespace Asignment_3
                 new System.IO.StreamReader(filename);
             while ((line = file.ReadLine()) != null)
             {
-                System.Console.WriteLine(line);
+                //System.Console.WriteLine(line);
                 result.Add(line);
                 counter++;
             }
 
             file.Close();
-            System.Console.WriteLine("There were {0} lines.", counter);
+            //System.Console.WriteLine("There were {0} lines.", counter);
             // Suspend the screen.  
-            System.Console.ReadLine();
+            //System.Console.ReadLine();
             return result;
         }
     }

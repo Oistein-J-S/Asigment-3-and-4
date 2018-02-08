@@ -6,7 +6,7 @@ namespace SpaceSim
     {
 
         protected String name; // OK
-        protected String orbits;// OK
+        protected SpaceObject orbits;// OK
         protected int objectRadius; //NA
         protected int orbitalRadius; //OK
         protected int orbitalPeriod; //OK
@@ -16,69 +16,69 @@ namespace SpaceSim
         // public SpaceObject(String name) {
         //     this.name = name;
         // }//END Creator1
-        public SpaceObject(String name, String orbits, int objectRadius, int orbitalRadius, int orbitalPeriod)
+        public SpaceObject(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius)
         {
             this.name = name;
             this.orbits = orbits;
-            this.objectRadius = objectRadius;
             this.orbitalRadius = orbitalRadius;
             this.orbitalPeriod = orbitalPeriod;
+            this.objectRadius = objectRadius;
             xPos = orbitalRadius;
             yPos = 0;
     }//END Creator2
 
         //Setters
-        public void setName(String name)
+        public void SetName(String name)
         {
             this.name = name;
         }
-        public void setObjectRadius(int objectRadius)
+        public void SetObjectRadius(int objectRadius)
         {
             this.objectRadius = objectRadius;
         }
-        public void setOrbitalRadius(int orbitalRadius)
+        public void SetOrbitalRadius(int orbitalRadius)
         {
             this.orbitalRadius = orbitalRadius;
         }
-        public void setOrbitalPeriod(int orbitalPeriod)
+        public void SetOrbitalPeriod(int orbitalPeriod)
         {
             this.orbitalPeriod = orbitalPeriod;
         }
-        public void setXPos(int xPos)
+        public void SetXPos(int xPos)
         {
             this.xPos = xPos;
         }
-        public void setYPos(int yPos)
+        public void SetYPos(int yPos)
         {
             this.yPos = yPos;
         }
         //Getters
-        public String getName()
+        public String GetName()
         {
             return this.name;
         }
-        public int getObjectRadius()
+        public int GetObjectRadius()
         {
             return this.objectRadius;
         }
-        public int getOrbitalRadius()
+        public int GetOrbitalRadius()
         {
             return this.orbitalRadius;
         }
-        public int getOrbitalPeriod()
+        public int GetOrbitalPeriod()
         {
             return this.orbitalPeriod;
         }
-        public int getXPos()
+        public int GetXPos()
         {
             return xPos;
         }
-        public int getYPos()
+        public int GetYPos()
         {
             return yPos;
         }
 
-        public virtual int calculatePosition(int time)
+        public virtual int CalculatePosition(int time)
         {
             int rest = time % orbitalPeriod; // remove multiple orbits
             double relativeTime = rest / orbitalPeriod; // find % value of completed orbit
@@ -99,7 +99,7 @@ namespace SpaceSim
 
     public class Star : SpaceObject
     {
-        public Star(String name, String orbits, int objectRadius, int orbitalRadius, int orbitalPeriod) : base(name, name, objectRadius, 0, 0) { }
+        public Star(String name, int objectRadius) : base(name, null, 0, 0, objectRadius) { }
         public override void Draw()
         {
             Console.Write("Star :");
@@ -109,7 +109,7 @@ namespace SpaceSim
 
     public class Planet : SpaceObject
     {
-        public Planet(String name, String orbits, int objectRadius, int orbitalRadius, int orbitalPeriod) : base(name, orbits, objectRadius, orbitalRadius, orbitalPeriod) { }
+        public Planet(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
             Console.Write("Planet :");
@@ -119,7 +119,7 @@ namespace SpaceSim
 
     public class Moon : SpaceObject
     {
-        public Moon(String name, String orbits, int objectRadius, int orbitalRadius, int orbitalPeriod) : base(name, orbits, objectRadius, orbitalRadius, orbitalPeriod) { }
+        public Moon(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
             Console.Write("Moon :");
@@ -129,7 +129,7 @@ namespace SpaceSim
 
     public class DwarfPlanet : SpaceObject
     {
-        public DwarfPlanet(String name, String orbits, int objectRadius, int orbitalRadius, int orbitalPeriod) : base(name, orbits, objectRadius, orbitalRadius, orbitalPeriod) { }
+        public DwarfPlanet(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
             Console.Write("DwarfPlanet :");
