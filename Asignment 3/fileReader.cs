@@ -14,12 +14,13 @@ namespace Asignment_3
             int counter = 0;
             string line;
 
+            //string filePath = System.IO.Path.GetFullPath(filename);
             // Read the file and display it line by line.  
             System.IO.StreamReader file =
-                new System.IO.StreamReader(@"c:\test.txt");
+                new System.IO.StreamReader(filename);
             while ((line = file.ReadLine()) != null)
             {
-                //System.Console.WriteLine(line);
+                System.Console.WriteLine(line);
                 result.Add(line);
                 counter++;
             }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using assignment3;
+using Asignment_3;
 
 namespace Asigment_4
 {
@@ -21,8 +21,8 @@ namespace Asigment_4
         private void button1_Click(object sender, EventArgs e)
         {
             Astronomy ast = new Astronomy();
-            ast.drawObjects();
-
+            //ast.drawObjects();
+            ast.createObjects();
         }
     }
 }

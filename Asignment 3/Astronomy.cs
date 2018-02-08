@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using SpaceSim;
 
-namespace assignment3
+namespace Asignment_3
 {
     public class Astronomy
     {
         List<SpaceObject> solarSystemManual;
-        List<SpaceObject> solarSystem;
+        List<String> solarSystem;
+        List<String> solarSystem2;
+        fileReader reader = new fileReader();
 
         public Astronomy()
         {
@@ -26,14 +28,18 @@ namespace assignment3
             new Moon("IO", "Jupiter", 100, 1100, 10),
             }; //END List
 
-            solarSystem = new List<SpaceObject>
-            {
-            };//END List
+            solarSystem = reader.readFile("objectData.txt");
         } //End Creator
 
-        public void getObjects()
+        public void createObjects()
         {
+            Tools tool = new Tools();
+            foreach(String obj in solarSystem)
+            {
+                //Console.WriteLine(tool.words(obj).Length);
+            }
 
+           
         }//END getObjects()
 
         public void drawObjects()

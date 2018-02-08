@@ -1,4 +1,4 @@
-                         (000 km)    (days)	          (km)		   
+﻿                         (000 km)    (days)	          (km)		   
 Name       #      Orbits Distance  O_Period  Incl Eccen  Radius    Discoverer   Date   A.K.A.
 ---------  ----  ------- --------  --------  ----- -----  ------  ----------   ----  -------
 Sun         -       -        -         -       -     -    696392        -           -   Sol (0)
@@ -16,17 +16,14 @@ Ceres      I     Sun       414015  1681.63   10.59  0.07    473      Giuseppe   
 Pluto      II    Sun      5913520 90550      17.15  0.25   1188.3    Tombaugh     1930  (0)
 
 Moon       I     Earth        384    27.32    5.14  0.05   1737.1       -           -   Luna (0)
-
 Phobos     I     Mars           9     0.32    1.00  0.02     11.3    Hall         1877
 Deimos     II    Mars          23     1.26    1.80  0.00      6.2    Hall         1877
-
 Amalthea   V     Jupiter      181     0.50    0.40  0.00     83.5    Barnard      1892
 Io         I     Jupiter      422     1.77    0.04  0.00   1821.5    Galileo(2)   1610
 Europa     II    Jupiter      671     3.55    0.47  0.01   1561      Galileo(2)   1610
 Ganymede   III   Jupiter     1070     7.15    0.19  0.00   2631      Galileo(2)   1610
 Callisto   IV    Jupiter     1883    16.69    0.28  0.01   2410.5    Galileo(2)   1610
 Himalia    VI    Jupiter    11480   250.57   28.00  0.16    170      Perrine      1904
-
 Mimas      I     Saturn       186     0.94    1.53  0.02    198      Herschel     1789
 Enceladus  II    Saturn       238     1.37    0.02  0.00    252      Herschel     1789
 Tethys     III   Saturn       295     1.89    1.09  0.00    531      Cassini      1684
@@ -34,13 +31,11 @@ Dione      IV    Saturn       377     2.74    0.02  0.00    561.5    Cassini    
 Rhea       V     Saturn       527     4.52    0.35  0.00    763.5    Cassini      1672
 Titan      VI    Saturn      1222    15.95    0.33  0.03   2575      Huygens      1655
 Iapetus    VIII  Saturn      3561    79.33   14.72  0.03    735      Cassini      1671
-
 Miranda    V     Uranus       130     1.41    4.22  0.00    235.8    Kuiper       1948
 Ariel      I     Uranus       191     2.52    0.00  0.00    578.9    Lassell      1851
 Umbriel    II    Uranus       266     4.14    0.00  0.00    584.7    Lassell      1851
 Titania    III   Uranus       436     8.71    0.00  0.00    788.4    Herschel     1787
 Oberon     IV    Uranus       583    13.46    0.00  0.00    761.4    Herschel     1787
-
 Naiad      III   Neptune       48     0.29    0.00  0.00     33      Voyager 2    1989  1989 N 6
 Thalassa   IV    Neptune       50     0.31    4.50  0.00     41      Voyager 2    1989  1989 N 5
 Despina    V     Neptune       53     0.33    0.00  0.00     75      Voyager 2    1989  1989 N 3
@@ -49,5 +44,4 @@ Larissa    VII   Neptune       74     0.55    0.00  0.00     97      Reitsema (h
 Proteus    VIII  Neptune      118     1.12    0.00  0.00    170      Voyager 2    1989  1989 N 1
 Triton     I     Neptune      355    -5.88  157.00  0.00    210      Lassell      1846
 Nereid     II    Neptune     5513   360.13   29.00  0.75   1352.6    Kuiper       1949
-
 Charon     I     Pluto         20     6.39   98.80  0.00    606.0    Christy      1978  1978 P 1
