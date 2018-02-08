@@ -8,7 +8,7 @@ namespace Asignment_3
 {
     class fileReader
     {
-        List<String> result = new List<String>;
+        List<String> result = new List<String>();
         public List<String> readFile(String filename)
         {
             int counter = 0;
@@ -28,6 +28,7 @@ namespace Asignment_3
             System.Console.WriteLine("There were {0} lines.", counter);
             // Suspend the screen.  
             System.Console.ReadLine();
+            return result;
         }
     }
 }

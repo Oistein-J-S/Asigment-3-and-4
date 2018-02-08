@@ -82,9 +82,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Asignment 3\Asignment 3.csproj">
+    <ProjectReference Include="..\Asignment 3\Assignment 3.csproj">
       <Project>{e5a80f63-aa00-4289-9a95-9e7022bee56d}</Project>
-      <Name>Asignment 3</Name>
+      <Name>Assignment 3</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

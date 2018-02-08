@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asigment 4", "Asigment 4\Asigment 4.csproj", "{DD952C62-6BC8-4E46-9895-A5209E275A76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment 4", "Asigment 4\Assignment 4.csproj", "{DD952C62-6BC8-4E46-9895-A5209E275A76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asignment 3", "Asignment 3\Asignment 3.csproj", "{E5A80F63-AA00-4289-9A95-9E7022BEE56D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment 3", "Asignment 3\Assignment 3.csproj", "{E5A80F63-AA00-4289-9A95-9E7022BEE56D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
