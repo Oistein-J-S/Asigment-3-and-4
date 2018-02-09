@@ -33,13 +33,38 @@ namespace Asigment_4
 
         private void DrawSpaceObject(SpaceSim.SpaceObject drawObject)
         {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
+            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
+            if (drawObject is SpaceSim.Star)
+            {
+                myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
+            }
+            else if(drawObject is SpaceSim.Planet)
+            {
+                myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
+            }
+            else if(drawObject is SpaceSim.DwarfPlanet)
+            {
+                myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Brown);
+            }
+            else if(drawObject is SpaceSim.Moon)
+            {
+                myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
+            }
+
             System.Drawing.Graphics formGraphics;
             formGraphics = DisplayPanel.CreateGraphics();
 
-            int radius = 200;
-            //Rectangle(X,y,width,height)
-            formGraphics.FillEllipse(myBrush, new Rectangle((DisplayPanel.Width / 2) - radius / 2, (DisplayPanel.Height / 2) - radius / 2, radius, radius));
+            int centerX = GetAbsoluteX(drawObject);
+            int centerY = GetAbsoluteY(drawObject);
+
+            double objRadius = drawObject.ObjectRadius;
+
+                //Rectangle(X,y,width,height)
+            formGraphics.FillEllipse(myBrush, new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius));
+
+
+
+
             myBrush.Dispose();
             formGraphics.Dispose();
 
@@ -52,6 +77,31 @@ namespace Asigment_4
 _thePanel.Anchor = AnchorStyles.None;
              * 
              */
+        }
+
+
+        public int GetAbsoluteX(SpaceSim.SpaceObject obj)
+        {
+            if(obj is SpaceSim.Star)
+            {
+                return DisplayPanel.Width / 2;
+            }
+            else
+            {
+                return GetAbsoluteX(obj.Orbits) + (int)obj.XPos;
+            }
+        }
+
+        public int GetAbsoluteY(SpaceSim.SpaceObject obj)
+        {
+            if (obj is SpaceSim.Star)
+            {
+                return DisplayPanel.Height / 2;
+            }
+            else
+            {
+                return GetAbsoluteY(obj.Orbits) + (int)obj.YPos;
+            }
         }
     }
 }
