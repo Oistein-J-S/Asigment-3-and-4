@@ -10,6 +10,7 @@ namespace SpaceSim
         private double objectRadius; //NA
         private double orbitalRadius; //OK
         private double orbitalPeriod; //OK
+        private String color;
         private double xPos;
         private double yPos;
 
@@ -20,6 +21,7 @@ namespace SpaceSim
         public double ObjectRadius { get => objectRadius; set => objectRadius = value; }
         public SpaceObject Orbits { get => orbits; set => orbits = value; }
         public string Name { get => name; set => name = value; }
+        public string Color { get => color; set => color = value; }
 
         // public SpaceObject(String name) {
         //     this.name = name;
