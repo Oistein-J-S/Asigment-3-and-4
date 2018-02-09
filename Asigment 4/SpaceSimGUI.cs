@@ -11,9 +11,9 @@ using Asignment_3;
 
 namespace Asigment_4
 {
-    public partial class Form1 : Form
+    public partial class SolarSim : Form
     {
-        public Form1()
+        public SolarSim()
         {
             InitializeComponent();
         }
@@ -27,13 +27,19 @@ namespace Asigment_4
         private void button2_Click(object sender, EventArgs e)
         {
 
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+
+        }
+
+
+        private void DrawSpaceObject(SpaceSim.SpaceObject drawObject)
+        {
+            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
             System.Drawing.Graphics formGraphics;
             formGraphics = DisplayPanel.CreateGraphics();
 
             int radius = 200;
             //Rectangle(X,y,width,height)
-            formGraphics.FillEllipse(myBrush, new Rectangle((DisplayPanel.Width/2)-radius/2, (DisplayPanel.Height/2)-radius/2, radius, radius));
+            formGraphics.FillEllipse(myBrush, new Rectangle((DisplayPanel.Width / 2) - radius / 2, (DisplayPanel.Height / 2) - radius / 2, radius, radius));
             myBrush.Dispose();
             formGraphics.Dispose();
 
