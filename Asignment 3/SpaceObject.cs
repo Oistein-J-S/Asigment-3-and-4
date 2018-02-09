@@ -37,9 +37,7 @@ namespace SpaceSim
             YPos = 0;
     }//END Creator2
 
-
-
-        public virtual void CalculatePosition(double time)
+    public virtual void CalculatePosition(double time)
         {
             double rest = time % OrbitalPeriod; // remove multiple orbits
             double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
