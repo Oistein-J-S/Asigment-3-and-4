@@ -6,7 +6,6 @@ namespace Asignment_3
 {
     public class Astronomy
     {
-        List<SpaceObject> solarSystemManual;
         List<SpaceObject> solarSystem;
         List<String> file;
         FileReader reader = new FileReader();
@@ -47,43 +46,64 @@ namespace Asignment_3
         private void CreateObjects()
         {
             Tools tool = new Tools(); // TODO should be static?
-            
+            Boolean token = false;
 
             foreach (String obj in file)
             {
-                String[] line = tool.words(obj);// get line
-                Boolean token = false;
+                String[] line = tool.words(obj);// get line        
                 // To generalise the creation of spaceObjects less dependant on the structure of the data
                 if (line.Length > 7)
                 {
                     if (line[2] == "Sun") //if it orbits the sun
                     {
                         //is it a planet?
-                        if (Int32.Parse(line[7]) > 20000) //TODO need better test
+                        if (makeDouble(line[7]) > 2000) //TODO need better test
                         {
-                            solarSystem.Add(new Planet(line[0], FindSpaceObject(line[2]), Int32.Parse(line[3]), Int32.Parse(line[4]), Int32.Parse(line[7])));
+                            solarSystem.Add(new Planet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                         }
 
                         else //otherwise dwarf planet or something else
                         {
-                            solarSystem.Add(new DwarfPlanet(line[0], FindSpaceObject(line[2]), Int32.Parse(line[3]), Int32.Parse(line[4]), Int32.Parse(line[7])));
+                            solarSystem.Add(new DwarfPlanet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                         }
                     }//END if Sun Orbit
 
                     else if (line[0] == "Sun") // if object is the sun
                     {
-                        solarSystem.Add(new Star(line[0], Int32.Parse(line[7])));
+                        solarSystem.Add(new Star(line[0], makeDouble(line[7])));
                         token = true;
                     }// END if Star
 
                     else if (token)// since now other objects, either moon or empty line
                     {
                         //Not an empty line
-                        solarSystem.Add(new Moon(line[0], FindSpaceObject(line[2]), Int32.Parse(line[3]), Int32.Parse(line[4]), Int32.Parse(line[7])));
+                        solarSystem.Add(new Moon(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                     }//END it's something else
                 }//END empty line test
             }
         }//END GetObjects()
+
+        //Nececary because system differating comma separator is a thing!
+        //TODO, handle errors diferently
+        private Double makeDouble(String inp)
+        {
+            Double result = 0;
+            try
+            {
+                result = Convert.ToDouble(inp, System.Globalization.CultureInfo.InvariantCulture);
+                //Console.WriteLine("Converted '{0}' to {1}.", inp, result);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Unable to convert '{0}' to a Double.", inp);
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("'{0}' is outside the range of a Double.", inp);
+            }
+            return result;
+
+        }
 
     }//END class Astronomy
 }//END Asignment_3
