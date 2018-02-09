@@ -30,6 +30,6 @@ namespace Asignment_3
             // Suspend the screen.  
             //System.Console.ReadLine();
             return result;
-        }
-    }
-}
+        }//END ReadFile
+    }//END class FileReader
+}//END  Asignment_3
