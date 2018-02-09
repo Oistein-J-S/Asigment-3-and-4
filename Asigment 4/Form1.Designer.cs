@@ -35,9 +35,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1049, 574);
+            this.button1.Location = new System.Drawing.Point(3, 11);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(57, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,17 +46,17 @@
             // DisplayPanel
             // 
             this.DisplayPanel.AccessibleName = "DisplayPanel";
-            this.DisplayPanel.Location = new System.Drawing.Point(13, 13);
+            this.DisplayPanel.Location = new System.Drawing.Point(67, 12);
             this.DisplayPanel.Name = "DisplayPanel";
-            this.DisplayPanel.Size = new System.Drawing.Size(1010, 584);
+            this.DisplayPanel.Size = new System.Drawing.Size(1009, 584);
             this.DisplayPanel.TabIndex = 1;
             this.DisplayPanel.Tag = "DisplayPanel";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1049, 43);
+            this.button2.Location = new System.Drawing.Point(3, 40);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(57, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1136, 609);
+            this.ClientSize = new System.Drawing.Size(1091, 609);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.DisplayPanel);
             this.Controls.Add(this.button1);

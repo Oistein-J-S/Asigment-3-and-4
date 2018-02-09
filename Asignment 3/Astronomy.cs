@@ -28,7 +28,7 @@ namespace Asignment_3
                 obj.Draw();
             }
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }//END DrawObjects
 
         // Find space object with given name
@@ -36,7 +36,7 @@ namespace Asignment_3
         {
             foreach (SpaceObject obj in solarSystem)
             {
-                if (obj.GetName() == name) {
+                if (obj.Name == name) {
                     return obj;
                 }
             }
