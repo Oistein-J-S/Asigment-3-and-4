@@ -7,16 +7,16 @@ namespace SpaceSim
 
         protected String name; // OK
         protected SpaceObject orbits;// OK
-        protected int objectRadius; //NA
-        protected int orbitalRadius; //OK
-        protected int orbitalPeriod; //OK
-        protected int xPos;
-        protected int yPos;
+        protected double objectRadius; //NA
+        protected double orbitalRadius; //OK
+        protected double orbitalPeriod; //OK
+        protected double xPos;
+        protected double yPos;
 
         // public SpaceObject(String name) {
         //     this.name = name;
         // }//END Creator1
-        public SpaceObject(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius)
+        public SpaceObject(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius)
         {
             this.name = name;
             this.orbits = orbits;
@@ -32,23 +32,23 @@ namespace SpaceSim
         {
             this.name = name;
         }
-        public void SetObjectRadius(int objectRadius)
+        public void SetObjectRadius(double objectRadius)
         {
             this.objectRadius = objectRadius;
         }
-        public void SetOrbitalRadius(int orbitalRadius)
+        public void SetOrbitalRadius(double orbitalRadius)
         {
             this.orbitalRadius = orbitalRadius;
         }
-        public void SetOrbitalPeriod(int orbitalPeriod)
+        public void SetOrbitalPeriod(double orbitalPeriod)
         {
             this.orbitalPeriod = orbitalPeriod;
         }
-        public void SetXPos(int xPos)
+        public void SetXPos(double xPos)
         {
             this.xPos = xPos;
         }
-        public void SetYPos(int yPos)
+        public void SetYPos(double yPos)
         {
             this.yPos = yPos;
         }
@@ -57,41 +57,39 @@ namespace SpaceSim
         {
             return this.name;
         }
-        public int GetObjectRadius()
+        public double GetObjectRadius()
         {
             return this.objectRadius;
         }
-        public int GetOrbitalRadius()
+        public double GetOrbitalRadius()
         {
             return this.orbitalRadius;
         }
-        public int GetOrbitalPeriod()
+        public double GetOrbitalPeriod()
         {
             return this.orbitalPeriod;
         }
-        public int GetXPos()
+        public double GetXPos()
         {
             return xPos;
         }
-        public int GetYPos()
+        public double GetYPos()
         {
             return yPos;
         }
 
-        public virtual int CalculatePosition(int time)
+        public virtual double CalculatePosition(double time)
         {
-            int rest = time % orbitalPeriod; // remove multiple orbits
+            double rest = time % orbitalPeriod; // remove multiple orbits
             double relativeTime = rest / orbitalPeriod; // find % value of completed orbit
-            return (int)relativeTime*360; //multiply by 360 to find degrees moved.
+            return relativeTime*360; //multiply by 360 to find degrees moved.
         }//END calculatePosition
 
         public virtual void Draw()
         {
-            Console.Write(name);
-            Console.Write(", Orbits :" + orbits);
-            Console.Write(", Radius :" + objectRadius);
-            Console.Write(", Orbit" + orbitalRadius);
-            Console.Write(", period" + orbitalPeriod);
+            Console.Write(", Radius:" + objectRadius + "km");
+            Console.Write(", Orbit:" + orbitalRadius + "000 km");
+            Console.Write(", periode:" + orbitalPeriod + "days");
             Console.Write(", Position: " + xPos + ", " + yPos );
             Console.WriteLine();
         }//END Draw
@@ -99,40 +97,47 @@ namespace SpaceSim
 
     public class Star : SpaceObject
     {
-        public Star(String name, int objectRadius) : base(name, null, 0, 0, objectRadius) { }
+        public Star(String name, double objectRadius) : base(name, null, 0, 0, objectRadius) { }
         public override void Draw()
         {
-            Console.Write("Star :");
+            Console.Write("Star: ");
+            Console.Write(name);
             base.Draw();
         }//END Draw
     }//END class Star
 
     public class Planet : SpaceObject
     {
-        public Planet(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public Planet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
-            Console.Write("Planet :");
+            Console.Write("Planet: ");
+            Console.Write(name);
+            Console.Write(" Orbits:" + orbits.GetName());
             base.Draw();
         }//END Draw
     }//END class Planet
 
     public class Moon : SpaceObject
     {
-        public Moon(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public Moon(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
-            Console.Write("Moon :");
+            Console.Write("Moon: ");
+            Console.Write(name);
+            Console.Write(" Orbits:" + orbits.GetName());
             base.Draw();
         }//END Draw
     }//END class Moon
 
     public class DwarfPlanet : SpaceObject
     {
-        public DwarfPlanet(String name, SpaceObject orbits, int orbitalRadius, int orbitalPeriod, int objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public DwarfPlanet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
         public override void Draw()
         {
-            Console.Write("DwarfPlanet :");
+            Console.Write("DwarfPlanet: ");
+            Console.Write(name);
+            Console.Write(" Orbits:" + orbits.GetName());
             base.Draw();
         }//END Draw
     }//END class DwarfPlanet
