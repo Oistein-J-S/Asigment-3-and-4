@@ -81,8 +81,13 @@ namespace SpaceSim
         public virtual double CalculatePosition(double time)
         {
             double rest = time % orbitalPeriod; // remove multiple orbits
-            double relativeTime = rest / orbitalPeriod; // find % value of completed orbit
-            return relativeTime*360; //multiply by 360 to find degrees moved.
+            double relativeTime = rest / orbitalPeriod; // find % value of completed orbit 
+            double orbitalDegrees = (double)relativeTime * 360; //multiply by 360 to find degrees moved.
+            orbitalDegrees = orbitalDegrees * (Math.PI / 180); //Convert degrees to radians
+            xPos = orbitalRadius * Math.Sin(orbitalDegrees); //Calculate updated x position
+            yPos = orbitalRadius * Math.Cos(orbitalDegrees); //Calculate updated y position.
+            //x = cos
+            //y = sin
         }//END calculatePosition
 
         public virtual void Draw()
