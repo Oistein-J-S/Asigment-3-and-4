@@ -78,7 +78,7 @@ namespace SpaceSim
             return yPos;
         }
 
-        public virtual double CalculatePosition(double time)
+        public virtual void CalculatePosition(double time)
         {
             double rest = time % orbitalPeriod; // remove multiple orbits
             double relativeTime = rest / orbitalPeriod; // find % value of completed orbit 
