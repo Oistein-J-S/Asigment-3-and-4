@@ -6,14 +6,14 @@ namespace Asignment_3
 {
     public class Astronomy
     {
-        List<SpaceObject> solarSystem;
+        public List<SpaceObject> SolarSystem { get; set; }
         List<String> file;
         FileReader reader = new FileReader();
 
         public Astronomy()
         {
             //Initialise SolarSystem
-            solarSystem = new List<SpaceObject>();
+            SolarSystem = new List<SpaceObject>();
             //Read file
             file = reader.readFile("objectData.txt");
             //Create object list
@@ -23,7 +23,7 @@ namespace Asignment_3
         public void DrawObjects()
         {
 
-            foreach (SpaceObject obj in solarSystem)
+            foreach (SpaceObject obj in SolarSystem)
             {
                 obj.Draw();
             }
@@ -34,7 +34,7 @@ namespace Asignment_3
         // Find space object with given name
         private SpaceObject FindSpaceObject(String name)
         {
-            foreach (SpaceObject obj in solarSystem)
+            foreach (SpaceObject obj in SolarSystem)
             {
                 if (obj.Name == name) {
                     return obj;
@@ -59,25 +59,25 @@ namespace Asignment_3
                         //is it a planet?
                         if (makeDouble(line[7]) > 2000) //TODO need better test
                         {
-                            solarSystem.Add(new Planet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
+                            SolarSystem.Add(new Planet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                         }
 
                         else //otherwise dwarf planet or something else
                         {
-                            solarSystem.Add(new DwarfPlanet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
+                            SolarSystem.Add(new DwarfPlanet(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                         }
                     }//END if Sun Orbit
 
                     else if (line[0] == "Sun") // if object is the sun
                     {
-                        solarSystem.Add(new Star(line[0], makeDouble(line[7])));
+                        SolarSystem.Add(new Star(line[0], makeDouble(line[7])));
                         token = true;
                     }// END if Star
 
                     else if (token)// since now other objects, either moon or empty line
                     {
                         //Not an empty line
-                        solarSystem.Add(new Moon(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
+                        SolarSystem.Add(new Moon(line[0], FindSpaceObject(line[2]), makeDouble(line[3]), makeDouble(line[4]), makeDouble(line[7])));
                     }//END it's something else
                 }//END empty line test
             }
