@@ -51,6 +51,7 @@
             this.DisplayPanel.Size = new System.Drawing.Size(1009, 584);
             this.DisplayPanel.TabIndex = 1;
             this.DisplayPanel.Tag = "DisplayPanel";
+            this.DisplayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DisplayPanel_Paint);
             // 
             // button2
             // 

@@ -7,32 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using Asignment_3;
 
 namespace Asigment_4
 {
     public partial class SolarSim : Form
     {
-        Astronomy ast;
+
 
         public SolarSim()
         {
-            ast = new Astronomy();
             InitializeComponent();
+
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Astronomy ast = new Astronomy();
+            System.Drawing.Graphics formGraphics;
+            formGraphics = DisplayPanel.CreateGraphics();
             ast.DrawObjects();
+            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
+            {
+                DrawSpaceObject(formGraphics, obj);
+            }
+            formGraphics.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
+
         }
 
 
-        private void DrawSpaceObject(SpaceSim.SpaceObject drawObject)
+        private void DrawSpaceObject(System.Drawing.Graphics formGraphics, SpaceSim.SpaceObject drawObject)
         {
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
             if (drawObject is SpaceSim.Star)
@@ -52,22 +63,22 @@ namespace Asigment_4
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
             }
 
-            System.Drawing.Graphics formGraphics;
-            formGraphics = DisplayPanel.CreateGraphics();
+            
 
             int centerX = GetAbsoluteX(drawObject);
             int centerY = GetAbsoluteY(drawObject);
 
-            double objRadius = drawObject.ObjectRadius;
+            double objRadius = drawObject.logObjectRadius;
 
-                //Rectangle(X,y,width,height)
-            formGraphics.FillEllipse(myBrush, new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius));
+            //Rectangle(X,y,width,height)
+            Rectangle rect = new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius);
+            formGraphics.FillEllipse(myBrush, rect);
 
 
 
 
             myBrush.Dispose();
-            formGraphics.Dispose();
+
 
             /*
              * 
@@ -89,7 +100,7 @@ _thePanel.Anchor = AnchorStyles.None;
             }
             else
             {
-                return GetAbsoluteX(obj.Orbits) + (int)obj.XPos;
+                return GetAbsoluteX(obj.Orbits) + (int)obj.xPos;
             }
         }
 
@@ -101,8 +112,13 @@ _thePanel.Anchor = AnchorStyles.None;
             }
             else
             {
-                return GetAbsoluteY(obj.Orbits) + (int)obj.YPos;
+                return GetAbsoluteY(obj.Orbits) + (int)obj.yPos;
             }
+        }
+
+        private void DisplayPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
