@@ -47,7 +47,7 @@ namespace Asigment_4
         {
             int centerX = GetAbsoluteX(drawObject);
             int centerY = GetAbsoluteY(drawObject);
-            double objRadius = drawObject.logObjectRadius;
+            double objRadius = drawObject.LogObjectRadius;
 
             //Create and select apropriat brush
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
@@ -87,7 +87,7 @@ namespace Asigment_4
             }
             else
             { //Otherwise get the position of the parrent object and ad it to it's own. 
-                return GetAbsoluteX(obj.Orbits) + (int)obj.xPos;
+                return GetAbsoluteX(obj.Orbits) + (int)obj.XPosScaled;
             }
         }
 
@@ -100,7 +100,7 @@ namespace Asigment_4
             }
             else
             {//Otherwise get the position of the parrent object and ad it to it's own. 
-                return GetAbsoluteY(obj.Orbits) + (int)obj.yPos;
+                return GetAbsoluteY(obj.Orbits) + (int)obj.YPosScaled;
             }
         }
 
