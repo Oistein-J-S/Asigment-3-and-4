@@ -41,36 +41,6 @@ namespace Asigment_4
             formGraphics.Dispose();
         }
 
-        private void loadDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ast.DrawObjects();
-        }
-
-        private void drawSolarSystemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Drawing.Graphics formGraphics;
-            formGraphics = DisplayPanel.CreateGraphics();
-            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
-            {
-                DrawSpaceObject(formGraphics, obj);
-                Console.WriteLine(obj.Name);
-            }
-            formGraphics.Dispose();
-        }
-
-        private void SolarSim_Resize(object sender, EventArgs e)
-        {
-            //TODO draw out into "drawSystem" method?
-            System.Drawing.Graphics formGraphics;
-            formGraphics = DisplayPanel.CreateGraphics();
-            formGraphics.Clear(System.Drawing.Color.White);
-            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
-            {
-                DrawSpaceObject(formGraphics, obj);
-            }
-            formGraphics.Dispose();
-        }
-
         // Draws a parsed space object
         //TODO maybe parse type instead of the whole object?
         private void DrawSpaceObject(System.Drawing.Graphics formGraphics, SpaceSim.SpaceObject drawObject)
