@@ -14,8 +14,9 @@ namespace SpaceSim
         private String color { get; set; }
         public double xPos {  get; set; }
         public double yPos {  get; set; }
-        private double xPosScaled { get; set; }
-        private double yPosScaled { get; set; }
+        public double xPosScaled { get; set; }
+        public double yPosScaled { get; set; }
+        private double degrees;
 
     
         public double OrbitalPeriod { get => orbitalPeriod; set => orbitalPeriod = value; }
@@ -35,10 +36,10 @@ namespace SpaceSim
             this.OrbitalRadius = orbitalRadius;
             this.OrbitalPeriod = orbitalPeriod;
             this.ObjectRadius = objectRadius;
-            this.logObjectRadius = Math.Log10(objectRadius)*10;
+            this.logObjectRadius = Math.Log10(objectRadius)*5;
             xPos = 0;
             yPos = 0;
-            CalculatePosition(0);
+            CalculatePosition(10000);
         }//END Creator2
 
     public virtual void CalculatePosition(double time)
@@ -48,12 +49,13 @@ namespace SpaceSim
                 yPos = orbitalRadius +
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
-                yPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
-                xPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
+                yPosScaled = 
+                (Math.Sin(((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2) * Math.Log10(orbitalRadius))*40;
+                xPosScaled = 
+                (Math.Cos(((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2) * Math.Log10(orbitalRadius))*40;
+                degrees = ((time % orbitalPeriod) / orbitalPeriod)*360;
             /*
-                            double rest = time % OrbitalPeriod; // remove multiple orbits
+                          double rest = time % OrbitalPeriod; // remove multiple orbits
                         double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
                         double orbitalDegrees = (double)relativeTime * 360; //multiply by 360 to find degrees moved.
                         orbitalDegrees = orbitalDegrees * (Math.PI / 180); //Convert degrees to radians
@@ -61,9 +63,10 @@ namespace SpaceSim
                         YPos = OrbitalRadius * Math.Cos(orbitalDegrees); //Calculate updated y position.
                         XPosScaled = logOrbitalRadius * Math.Sin(orbitalDegrees); //Calculate updated virtual x coord
                         YPosScaled = logOrbitalRadius * Math.Cos(orbitalDegrees); //Calculate updated virtual y coord
+    */
                                                                      //x = cos
                                                                      //y = sin
-            */
+            
         }//END calculatePosition
 
 
