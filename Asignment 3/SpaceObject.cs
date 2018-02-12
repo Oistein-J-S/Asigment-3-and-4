@@ -4,7 +4,7 @@ namespace SpaceSim
 {
     public class SpaceObject
     {
-
+        protected int DEFAULT_TIME = 365;
         private String name; // OK
         private SpaceObject orbits;// OK
         private double objectRadius; //NA
@@ -16,6 +16,7 @@ namespace SpaceSim
         private double yPos;
         private double xPosScaled;
         private double yPosScaled;
+        private double angle;
 
     
         public double OrbitalPeriod { get => orbitalPeriod; set => orbitalPeriod = value; }
@@ -40,10 +41,9 @@ namespace SpaceSim
             this.OrbitalRadius = orbitalRadius;
             this.OrbitalPeriod = orbitalPeriod;
             this.ObjectRadius = objectRadius;
-            this.LogObjectRadius = Math.Log10(objectRadius)*10;
+            this.LogObjectRadius = Math.Log10(objectRadius)*5;
             XPos = 0;
             YPos = 0;
-            CalculatePosition(0);
         }//END Creator2
 
     public virtual void CalculatePosition(double time)
@@ -53,10 +53,11 @@ namespace SpaceSim
                 YPos = orbitalRadius +
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
-                YPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
-                XPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
+                angle = ((time % orbitalPeriod) / orbitalPeriod)*360;
+            //YPosScaled = (Math.Sin((time%orbitalPeriod)/orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius),2)*600;
+            //XPosScaled = (Math.Cos((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius), 2)*600;
+            YPosScaled = (Math.Sin((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
+            XPosScaled = (Math.Cos((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
             /*
                             double rest = time % OrbitalPeriod; // remove multiple orbits
                         double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
@@ -86,48 +87,64 @@ namespace SpaceSim
 
     public class Star : SpaceObject
     {
-        public Star(String name, double objectRadius) : base(name, null, 0, 0, objectRadius) { }
+        public Star(String name, double objectRadius) : base(name, null, 0, 0, objectRadius) { CalculatePosition(200); }
         public override void Draw()
         {
             Console.Write("Star: ");
             Console.Write(Name);
             base.Draw();
+            
+
         }//END Draw
     }//END class Star
 
     public class Planet : SpaceObject
     {
-        public Planet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public Planet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius)
+        {
+            CalculatePosition(DEFAULT_TIME);
+        }
         public override void Draw()
         {
             Console.Write("Planet: ");
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
+
         }//END Draw
     }//END class Planet
 
     public class Moon : SpaceObject
     {
-        public Moon(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public Moon(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius)
+        {
+            this.OrbitalRadius = ((this.Orbits.LogObjectRadius / this.Orbits.ObjectRadius) * this.OrbitalRadius)*100 ;
+            //this.LogObjectRadius = ((this.Orbits.LogObjectRadius / this.Orbits.ObjectRadius) * this.ObjectRadius) * 5;
+            CalculatePosition(DEFAULT_TIME);
+        }
         public override void Draw()
         {
             Console.Write("Moon: ");
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
+
         }//END Draw
     }//END class Moon
 
     public class DwarfPlanet : SpaceObject
     {
-        public DwarfPlanet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius) { }
+        public DwarfPlanet(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius) : base(name, orbits, orbitalRadius, orbitalPeriod, objectRadius)
+        {
+            CalculatePosition(DEFAULT_TIME);
+        }
         public override void Draw()
         {
             Console.Write("DwarfPlanet: ");
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
+
         }//END Draw
     }//END class DwarfPlanet
 
