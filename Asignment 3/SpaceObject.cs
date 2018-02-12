@@ -4,7 +4,7 @@ namespace SpaceSim
 {
     public class SpaceObject
     {
-        protected int DEFAULT_TIME = 365;
+        protected int DEFAULT_TIME = 0;
         private String name; // OK
         private SpaceObject orbits;// OK
         private double objectRadius; //NA

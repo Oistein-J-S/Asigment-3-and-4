@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DisplayPanel = new System.Windows.Forms.Panel();
+            this.LabelDayCounter = new System.Windows.Forms.Label();
+            this.LabelDay = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loadDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawSolarSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.DisplayPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DisplayPanel
             // 
             this.DisplayPanel.AccessibleName = "DisplayPanel";
+            this.DisplayPanel.Controls.Add(this.LabelDayCounter);
+            this.DisplayPanel.Controls.Add(this.LabelDay);
             this.DisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisplayPanel.Location = new System.Drawing.Point(0, 24);
             this.DisplayPanel.Name = "DisplayPanel";
@@ -46,6 +53,24 @@
             this.DisplayPanel.TabIndex = 1;
             this.DisplayPanel.Tag = "DisplayPanel";
             this.DisplayPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DisplayPanel_Paint);
+            // 
+            // LabelDayCounter
+            // 
+            this.LabelDayCounter.AutoSize = true;
+            this.LabelDayCounter.Location = new System.Drawing.Point(48, 22);
+            this.LabelDayCounter.Name = "LabelDayCounter";
+            this.LabelDayCounter.Size = new System.Drawing.Size(13, 13);
+            this.LabelDayCounter.TabIndex = 1;
+            this.LabelDayCounter.Text = "0";
+            // 
+            // LabelDay
+            // 
+            this.LabelDay.AutoSize = true;
+            this.LabelDay.Location = new System.Drawing.Point(12, 22);
+            this.LabelDay.Name = "LabelDay";
+            this.LabelDay.Size = new System.Drawing.Size(29, 13);
+            this.LabelDay.TabIndex = 0;
+            this.LabelDay.Text = "Day:";
             // 
             // menuStrip1
             // 
@@ -80,6 +105,10 @@
             this.startSimulationToolStripMenuItem.Text = "Start Simulation";
             this.startSimulationToolStripMenuItem.Click += new System.EventHandler(this.startSimulationToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // SolarSim
             // 
             this.AccessibleName = "SolarSim";
@@ -92,6 +121,8 @@
             this.Name = "SolarSim";
             this.Text = "Solar Simulator";
             this.Resize += new System.EventHandler(this.SolarSim_Resize);
+            this.DisplayPanel.ResumeLayout(false);
+            this.DisplayPanel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -105,6 +136,9 @@
         private System.Windows.Forms.ToolStripMenuItem loadDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem drawSolarSystemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startSimulationToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label LabelDay;
+        private System.Windows.Forms.Label LabelDayCounter;
     }
 }
 

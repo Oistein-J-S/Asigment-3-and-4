@@ -16,12 +16,15 @@ namespace Asigment_4
     public partial class SolarSim : Form
     {
         Astronomy ast;
-        
+        private int _ticks;
+        private bool started;
+
 
         public SolarSim()
         {
             InitializeComponent();
             ast = new Astronomy();
+            started = false;
         }
 
         //Prints objects in cmd
@@ -87,11 +90,11 @@ namespace Asigment_4
             {
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Yellow);
             }
-            else if(drawObject is SpaceSim.Planet)
+            else if (drawObject is SpaceSim.Planet)
             {
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green);
             }
-            else if(drawObject is SpaceSim.DwarfPlanet)
+            else if (drawObject is SpaceSim.DwarfPlanet)
             {
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Brown);
             }
@@ -113,7 +116,7 @@ namespace Asigment_4
         // Finds objects on screen x position
         public int GetAbsoluteX(SpaceSim.SpaceObject obj)
         {
-            if(obj is SpaceSim.Star)
+            if (obj is SpaceSim.Star)
             { // if object is star: return center of drawing space
                 return DisplayPanel.Width / 2;
             }
@@ -144,6 +147,38 @@ namespace Asigment_4
 
         private void startSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!started)
+            {
+                timer1.Start();
+                started = true;
+                startSimulationToolStripMenuItem.Text = "Stop";
+
+            }
+            else
+            {
+                timer1.Stop();
+                _ticks = 0;
+                LabelDayCounter.Text = _ticks.ToString();
+                started = false;
+                startSimulationToolStripMenuItem.Text = "Start simulation";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            System.Drawing.Graphics formGraphics;
+            formGraphics = DisplayPanel.CreateGraphics();
+            formGraphics.Clear(Color.LightGray);
+            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
+            {
+                obj.CalculatePosition(_ticks);
+                DrawSpaceObject(formGraphics, obj);
+                Console.WriteLine(obj.Name);
+            }
+            formGraphics.Dispose();
+            _ticks++;
+            LabelDayCounter.Text = _ticks.ToString();
+
 
         }
     }

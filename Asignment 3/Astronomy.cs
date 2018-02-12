@@ -29,8 +29,16 @@ namespace Asignment_3
             }
         }//END DrawObjects
 
-        // Find space object with given name
-        private SpaceObject FindSpaceObject(String name)
+        public void RedrawObjects(int time)
+        {
+            foreach (SpaceObject obj in SolarSystem)
+            {
+                obj.CalculatePosition(time);
+            }
+        }
+
+    // Find space object with given name
+    private SpaceObject FindSpaceObject(String name)
         {
             foreach (SpaceObject obj in SolarSystem)
             {
@@ -40,6 +48,7 @@ namespace Asignment_3
             }
             return null;
         }//END FindSpaceObject
+
 
         private void CreateObjects()
         {
