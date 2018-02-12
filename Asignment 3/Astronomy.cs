@@ -27,8 +27,6 @@ namespace Asignment_3
             {
                 obj.Draw();
             }
-
-            //Console.ReadLine();
         }//END DrawObjects
 
         // Find space object with given name
