@@ -36,6 +36,7 @@ namespace Asigment_4
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 DrawSpaceObject(formGraphics, obj);
+                Console.WriteLine(obj.Name);
             }
             formGraphics.Dispose();
         }
@@ -44,6 +45,11 @@ namespace Asigment_4
         //TODO maybe parse type instead of the whole object?
         private void DrawSpaceObject(System.Drawing.Graphics formGraphics, SpaceSim.SpaceObject drawObject)
         {
+            int centerX = GetAbsoluteX(drawObject);
+            int centerY = GetAbsoluteY(drawObject);
+            double objRadius = drawObject.logObjectRadius;
+
+            //Create and select apropriat brush
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
             if (drawObject is SpaceSim.Star)
             {
@@ -57,52 +63,43 @@ namespace Asigment_4
             {
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Brown);
             }
-            else if(drawObject is SpaceSim.Moon)
-            {
-                myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
-            }
-
-            int centerX = GetAbsoluteX(drawObject);
-            int centerY = GetAbsoluteY(drawObject);
-            double objRadius = drawObject.logObjectRadius;
+            // else if(drawObject is SpaceSim.Moon){myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);}
 
             //Rectangle(X,y,width,height)
             Rectangle rect = new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius);
+            //Draw a circle in specified rectangle
             formGraphics.FillEllipse(myBrush, rect);
 
             myBrush.Dispose();
 
-            /* 
-             * _thePanel.Location = new Point(
-    this.ClientSize.Width / 2 - _thePanel.Size.Width / 2,
-    this.ClientSize.Height / 2 - _thePanel.Size.Height / 2);
-_thePanel.Anchor = AnchorStyles.None;
-             * 
+            /* _thePanel.Location = new Point(this.ClientSize.Width / 2 - _thePanel.Size.Width / 2,
+             * this.ClientSize.Height / 2 - _thePanel.Size.Height / 2);
+             * _thePanel.Anchor = AnchorStyles.None;
              */
         }
 
-        // Finds window centre x axis
+        // Finds objects on screen x position
         public int GetAbsoluteX(SpaceSim.SpaceObject obj)
         {
             if(obj is SpaceSim.Star)
-            {
+            { // if object is star: return center of drawing space
                 return DisplayPanel.Width / 2;
             }
             else
-            {
+            { //Otherwise get the position of the parrent object and ad it to it's own. 
                 return GetAbsoluteX(obj.Orbits) + (int)obj.xPos;
             }
         }
 
-        // Finds window centre y axis
+        // Finds objects on screen y position
         public int GetAbsoluteY(SpaceSim.SpaceObject obj)
         {
             if (obj is SpaceSim.Star)
-            {
+            {// if object is star: return center of drawing space
                 return DisplayPanel.Height / 2;
             }
             else
-            {
+            {//Otherwise get the position of the parrent object and ad it to it's own. 
                 return GetAbsoluteY(obj.Orbits) + (int)obj.yPos;
             }
         }
