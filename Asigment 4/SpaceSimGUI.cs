@@ -139,6 +139,7 @@ namespace Asigment_4
         //WHat is this?
         private void DisplayPanel_Paint(object sender, PaintEventArgs e)
         {
+            SpaceTimeController stc = new SpaceTimeController();
         }
 
         private void startSimulationToolStripMenuItem_Click(object sender, EventArgs e)
