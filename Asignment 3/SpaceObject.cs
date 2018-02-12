@@ -50,7 +50,7 @@ namespace SpaceSim
 
                 yPosScaled = Math.Log10(orbitalRadius) +
                 (int)(Math.Sin(time * orbitalPeriod * 3.1416 / 180) * Math.Log10(orbitalRadius));
-                xPos = Math.Log10(orbitalRadius) +
+                xPosScaled = Math.Log10(orbitalRadius) +
                 (int)(Math.Cos(time * orbitalPeriod * 3.1416 / 180) * Math.Log10(orbitalRadius));
             /*
                             double rest = time % OrbitalPeriod; // remove multiple orbits
