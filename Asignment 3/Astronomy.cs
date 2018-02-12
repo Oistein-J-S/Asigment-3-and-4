@@ -105,5 +105,7 @@ namespace Asignment_3
 
         }
 
+        public 
+
     }//END class Astronomy
 }//END Asignment_3

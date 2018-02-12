@@ -13,21 +13,22 @@ namespace Asigment_4
 {
     public partial class SolarSim : Form
     {
+        Astronomy ast;
+
         public SolarSim()
         {
+            ast = new Astronomy();
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Astronomy ast = new Astronomy();
             ast.DrawObjects();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
+            
         }
 
 
