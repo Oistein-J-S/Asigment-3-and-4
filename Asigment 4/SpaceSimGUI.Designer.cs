@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loadDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drawSolarSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadDataToolStripMenuItem,
-            this.drawSolarSystemToolStripMenuItem});
+            this.drawSolarSystemToolStripMenuItem,
+            this.startSimulationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -70,6 +72,13 @@
             this.drawSolarSystemToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.drawSolarSystemToolStripMenuItem.Text = "Draw Solar System";
             this.drawSolarSystemToolStripMenuItem.Click += new System.EventHandler(this.drawSolarSystemToolStripMenuItem_Click);
+            // 
+            // startSimulationToolStripMenuItem
+            // 
+            this.startSimulationToolStripMenuItem.Name = "startSimulationToolStripMenuItem";
+            this.startSimulationToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.startSimulationToolStripMenuItem.Text = "Start Simulation";
+            this.startSimulationToolStripMenuItem.Click += new System.EventHandler(this.startSimulationToolStripMenuItem_Click);
             // 
             // SolarSim
             // 
@@ -95,6 +104,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loadDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem drawSolarSystemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startSimulationToolStripMenuItem;
     }
 }
 

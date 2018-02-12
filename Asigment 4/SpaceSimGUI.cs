@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 using Asignment_3;
 
 namespace Asigment_4
@@ -15,6 +16,7 @@ namespace Asigment_4
     public partial class SolarSim : Form
     {
         Astronomy ast;
+        
 
         public SolarSim()
         {
@@ -137,6 +139,11 @@ namespace Asigment_4
         //WHat is this?
         private void DisplayPanel_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void startSimulationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

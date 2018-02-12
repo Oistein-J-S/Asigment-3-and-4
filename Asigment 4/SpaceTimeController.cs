@@ -7,21 +7,32 @@ using System.Timers;
 
 namespace Asigment_4
 {
-    class SpaceTimeController
+    public class SpaceTimeController
     {
-        Timer timer;
+        static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+
 
         //Create timer and subscribe this to an event or delegates.
-        SpaceTimeController() {
-            timer = new Timer(1000);
-            //timer.Elapsed += async (sender, e) => await HandleTimer();
-            //timer.Start();
+        public SpaceTimeController() {
+
+            myTimer.Tick += new EventHandler(TimerEventProcessor);
+
+            myTimer.Interval = 5000;
+            //myTimer.Start();
         }//END creator
 
-        public void UpdatePosition()
+
+        private static void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        {
+            //send event to update position here
+            //possibly redraw?
+        }
+
+
+        public static void StartAnimation()
         {
 
-        }//END UppdatePosition
+        }
 
     }//END class SpaceTimeController
 }//END Assignment_4
