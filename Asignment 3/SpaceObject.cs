@@ -44,14 +44,14 @@ namespace SpaceSim
     public virtual void CalculatePosition(double time)
         {
                 xPos = orbitalRadius +
-                (int)(Math.Cos(time * orbitalPeriod * 3.1416 / 180) * orbitalRadius);
+                (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
                 yPos = orbitalRadius +
-                (int)(Math.Sin(time * orbitalPeriod * 3.1416 / 180) * orbitalRadius);
+                (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
                 yPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Sin(time * orbitalPeriod * 3.1416 / 180) * Math.Log10(orbitalRadius));
+                (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
                 xPosScaled = Math.Log10(orbitalRadius) +
-                (int)(Math.Cos(time * orbitalPeriod * 3.1416 / 180) * Math.Log10(orbitalRadius));
+                (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
             /*
                             double rest = time % OrbitalPeriod; // remove multiple orbits
                         double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
