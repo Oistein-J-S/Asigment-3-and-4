@@ -18,7 +18,7 @@ namespace Asigment_4
             //timer.Start();
         }//END creator
 
-        public void UppdatePosition()
+        public void UpdatePosition()
         {
 
         }//END UppdatePosition

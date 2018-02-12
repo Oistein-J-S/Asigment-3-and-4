@@ -7,15 +7,15 @@ namespace SpaceSim
 
         private String name; // OK
         private SpaceObject orbits;// OK
-        private double objectRadius { get; set; } //NA
-        public double logObjectRadius { get; set; }
-        public double orbitalRadius { get; set; } //OK
-        private double orbitalPeriod { get; set; } //OK
-        private String color { get; set; }
-        public double xPos {  get; set; }
-        public double yPos {  get; set; }
-        private double xPosScaled { get; set; }
-        private double yPosScaled { get; set; }
+        private double objectRadius; //NA
+        private double logObjectRadius;
+        private double orbitalRadius; //OK
+        private double orbitalPeriod; //OK
+        private String color;
+        private double xPos;
+        private double yPos;
+        private double xPosScaled;
+        private double yPosScaled;
 
     
         public double OrbitalPeriod { get => orbitalPeriod; set => orbitalPeriod = value; }
@@ -24,6 +24,11 @@ namespace SpaceSim
         public SpaceObject Orbits { get => orbits; set => orbits = value; }
         public string Name { get => name; set => name = value; }
         public string Color { get => color; set => color = value; }
+        public double LogObjectRadius { get => logObjectRadius; set => logObjectRadius = value; }
+        public double XPos { get => xPos; set => xPos = value; }
+        public double YPos { get => yPos; set => yPos = value; }
+        public double XPosScaled { get => xPosScaled; set => xPosScaled = value; }
+        public double YPosScaled { get => yPosScaled; set => yPosScaled = value; }
 
         // public SpaceObject(String name) {
         //     this.name = name;
@@ -35,22 +40,22 @@ namespace SpaceSim
             this.OrbitalRadius = orbitalRadius;
             this.OrbitalPeriod = orbitalPeriod;
             this.ObjectRadius = objectRadius;
-            this.logObjectRadius = Math.Log10(objectRadius)*10;
-            xPos = 0;
-            yPos = 0;
+            this.LogObjectRadius = Math.Log10(objectRadius)*10;
+            XPos = 0;
+            YPos = 0;
             CalculatePosition(0);
         }//END Creator2
 
     public virtual void CalculatePosition(double time)
         {
-                xPos = orbitalRadius +
+                XPos = orbitalRadius +
                 (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
-                yPos = orbitalRadius +
+                YPos = orbitalRadius +
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
-                yPosScaled = Math.Log10(orbitalRadius) +
+                YPosScaled = Math.Log10(orbitalRadius) +
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
-                xPosScaled = Math.Log10(orbitalRadius) +
+                XPosScaled = Math.Log10(orbitalRadius) +
                 (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * Math.Log10(orbitalRadius));
             /*
                             double rest = time % OrbitalPeriod; // remove multiple orbits
@@ -74,7 +79,7 @@ namespace SpaceSim
             Console.Write(", Radius:" + ObjectRadius + "km");
             Console.Write(", Orbit:" + OrbitalRadius + "000 km");
             Console.Write(", periode:" + OrbitalPeriod + "days");
-            Console.Write(", Position: " + xPos + ", " + yPos );
+            Console.Write(", Position: " + XPos + ", " + YPos );
             Console.WriteLine();
         }//END Draw
     }//END class SpaceObject
