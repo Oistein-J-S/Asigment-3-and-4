@@ -13,12 +13,12 @@ namespace Asigment_4
 
         //Create timer and subscribe this to an event or delegates.
         SpaceTimeController() {
-            //timer = new Timer(1000);
+            timer = new Timer(1000);
             //timer.Elapsed += async (sender, e) => await HandleTimer();
             //timer.Start();
         }//END creator
 
-        public void UppdatePosition()
+        public void UpdatePosition()
         {
 
         }//END UppdatePosition
