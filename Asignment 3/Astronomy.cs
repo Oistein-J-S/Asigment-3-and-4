@@ -104,8 +104,5 @@ namespace Asignment_3
             return result;
 
         }
-
-        public 
-
     }//END class Astronomy
 }//END Asignment_3

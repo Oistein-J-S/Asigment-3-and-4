@@ -18,7 +18,10 @@ namespace Asigment_4
             //timer.Start();
         }//END creator
 
+        public void UppdatePosition()
+        {
 
+        }//END UppdatePosition
 
     }//END class SpaceTimeController
 }//END Assignment_4

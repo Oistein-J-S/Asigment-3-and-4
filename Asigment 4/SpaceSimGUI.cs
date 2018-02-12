@@ -14,35 +14,37 @@ namespace Asigment_4
 {
     public partial class SolarSim : Form
     {
-
+        Astronomy ast;
 
         public SolarSim()
         {
             InitializeComponent();
-
+            ast = new Astronomy();
         }
 
-
+        //Prints objects in cmd
         private void button1_Click(object sender, EventArgs e)
         {
-            Astronomy ast = new Astronomy();
+            
+            ast.DrawObjects();
+           
+        }
+
+        //Draws objects in window
+        private void button2_Click(object sender, EventArgs e)
+        {
             System.Drawing.Graphics formGraphics;
             formGraphics = DisplayPanel.CreateGraphics();
-            ast.DrawObjects();
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 DrawSpaceObject(formGraphics, obj);
             }
             formGraphics.Dispose();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
 
         }
 
-
+        // Draws a parsed space object
+        //TODO maybe parse type instead of the whole object?
         private void DrawSpaceObject(System.Drawing.Graphics formGraphics, SpaceSim.SpaceObject drawObject)
         {
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
@@ -92,6 +94,7 @@ _thePanel.Anchor = AnchorStyles.None;
         }
 
 
+        // Finds window centre x axis
         public int GetAbsoluteX(SpaceSim.SpaceObject obj)
         {
             if(obj is SpaceSim.Star)
@@ -104,6 +107,7 @@ _thePanel.Anchor = AnchorStyles.None;
             }
         }
 
+        // Finds window centre y axis
         public int GetAbsoluteY(SpaceSim.SpaceObject obj)
         {
             if (obj is SpaceSim.Star)
