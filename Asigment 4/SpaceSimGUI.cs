@@ -110,5 +110,34 @@ _thePanel.Anchor = AnchorStyles.None;
         private void DisplayPanel_Paint(object sender, PaintEventArgs e)
         {
         }
+
+        private void loadDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ast.DrawObjects();
+        }
+
+        private void drawSolarSystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Drawing.Graphics formGraphics;
+            formGraphics = DisplayPanel.CreateGraphics();
+            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
+            {
+                DrawSpaceObject(formGraphics, obj);
+            }
+            formGraphics.Dispose();
+        }
+
+        private void SolarSim_Resize(object sender, EventArgs e)
+        {
+            //TODO draw out into "drawSystem" method?
+            System.Drawing.Graphics formGraphics;
+            formGraphics = DisplayPanel.CreateGraphics();
+            formGraphics.Clear(System.Drawing.Color.White);
+            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
+            {
+                DrawSpaceObject(formGraphics, obj);
+            }
+            formGraphics.Dispose();
+        }
     }
 }
