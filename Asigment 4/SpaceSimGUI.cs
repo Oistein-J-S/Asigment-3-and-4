@@ -25,9 +25,7 @@ namespace Asigment_4
         //Prints objects in cmd
         private void button1_Click(object sender, EventArgs e)
         {
-            
             ast.DrawObjects();
-           
         }
 
         //Draws objects in window
@@ -40,7 +38,6 @@ namespace Asigment_4
                 DrawSpaceObject(formGraphics, obj);
             }
             formGraphics.Dispose();
-
         }
 
         // Draws a parsed space object
@@ -65,26 +62,17 @@ namespace Asigment_4
                 myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Gray);
             }
 
-            
-
             int centerX = GetAbsoluteX(drawObject);
             int centerY = GetAbsoluteY(drawObject);
-
             double objRadius = drawObject.logObjectRadius;
 
             //Rectangle(X,y,width,height)
             Rectangle rect = new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius);
             formGraphics.FillEllipse(myBrush, rect);
 
-
-
-
             myBrush.Dispose();
 
-
-            /*
-             * 
-             * 
+            /* 
              * _thePanel.Location = new Point(
     this.ClientSize.Width / 2 - _thePanel.Size.Width / 2,
     this.ClientSize.Height / 2 - _thePanel.Size.Height / 2);
@@ -92,7 +80,6 @@ _thePanel.Anchor = AnchorStyles.None;
              * 
              */
         }
-
 
         // Finds window centre x axis
         public int GetAbsoluteX(SpaceSim.SpaceObject obj)
@@ -122,7 +109,6 @@ _thePanel.Anchor = AnchorStyles.None;
 
         private void DisplayPanel_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
 }
