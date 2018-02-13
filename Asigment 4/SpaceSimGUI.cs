@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpaceSim;
 
 
 using Asignment_3;
@@ -44,6 +45,18 @@ namespace Asigment_4
             formGraphics.Dispose();
         }
 
+        private void drawOrbit(Graphics formGraphics, SpaceObject drawObject)
+        {
+            int centerX = DisplayPanel.Width / 2;
+            int centerY = DisplayPanel.Height / 2;
+            double objRadius = drawObject.ModifiedOrbitalRadius;
+            System.Drawing.SolidBrush ellipseBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Rectangle ellipseRect = new Rectangle((int)(centerX - objRadius), (int)(centerY - objRadius), (int) (centerX + objRadius), (int) (centerY + objRadius));
+            Pen p = new Pen(ellipseBrush);
+            formGraphics.DrawEllipse(p, ellipseRect);
+            ellipseBrush.Dispose();
+        }
+
         private void SolarSim_Resize(object sender, EventArgs e)
         {
             //TODO draw out into "drawSystem" method?
@@ -53,6 +66,7 @@ namespace Asigment_4
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 DrawSpaceObject(formGraphics, obj);
+                drawOrbit(formGraphics, obj);
             }
             formGraphics.Dispose();
         }
@@ -92,7 +106,15 @@ namespace Asigment_4
              * this.ClientSize.Height / 2 - _thePanel.Size.Height / 2);
              * _thePanel.Anchor = AnchorStyles.None;
              */
+
+            System.Drawing.SolidBrush ellipseBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Rectangle ellipse = new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius);
+            Pen p = new Pen(ellipseBrush);
+            formGraphics.DrawEllipse(p, ellipse);
+            ellipseBrush.Dispose();
         }
+
+
 
         // Finds objects on screen x position
         public int GetAbsoluteX(SpaceSim.SpaceObject obj)
