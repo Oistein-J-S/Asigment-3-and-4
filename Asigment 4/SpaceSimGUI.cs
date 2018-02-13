@@ -27,25 +27,6 @@ namespace Asigment_4
             started = false;
         }
 
-        //Prints objects in cmd
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ast.DrawObjects();
-        }
-
-        //Draws objects in window
-        private void button2_Click(object sender, EventArgs e)
-        {
-            System.Drawing.Graphics formGraphics;
-            formGraphics = DisplayPanel.CreateGraphics();
-            foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
-            {
-                DrawSpaceObject(formGraphics, obj);
-                Console.WriteLine(obj.Name);
-            }
-            formGraphics.Dispose();
-        }
-
         private void loadDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ast.DrawObjects();
@@ -58,7 +39,7 @@ namespace Asigment_4
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 DrawSpaceObject(formGraphics, obj);
-                Console.WriteLine(obj.Name);
+                //Console.WriteLine(obj.Name);
             }
             formGraphics.Dispose();
         }
@@ -173,7 +154,7 @@ namespace Asigment_4
             {
                 obj.CalculatePosition(_ticks);
                 DrawSpaceObject(formGraphics, obj);
-                Console.WriteLine(obj.Name);
+                //Console.WriteLine(obj.Name);
             }
             formGraphics.Dispose();
             _ticks++;

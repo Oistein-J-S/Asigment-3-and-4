@@ -31,9 +31,6 @@ namespace SpaceSim
         public double XPosScaled { get => xPosScaled; set => xPosScaled = value; }
         public double YPosScaled { get => yPosScaled; set => yPosScaled = value; }
 
-        // public SpaceObject(String name) {
-        //     this.name = name;
-        // }//END Creator1
         public SpaceObject(String name, SpaceObject orbits, double orbitalRadius, double orbitalPeriod, double objectRadius)
         {
             this.Name = name;
@@ -48,16 +45,18 @@ namespace SpaceSim
 
     public virtual void CalculatePosition(double time)
         {
-                XPos = orbitalRadius +
+            XPos = orbitalRadius +
                 (int)(Math.Cos(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
-                YPos = orbitalRadius +
+            YPos = orbitalRadius +
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
-                angle = ((time % orbitalPeriod) / orbitalPeriod)*360;
+            angle = ((time % orbitalPeriod) / orbitalPeriod)*360;
             //YPosScaled = (Math.Sin((time%orbitalPeriod)/orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius),2)*600;
             //XPosScaled = (Math.Cos((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius), 2)*600;
+            //ScaledPos = OrbitPath modifyer * OrbitRadius Modifyer
             YPosScaled = (Math.Sin((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
             XPosScaled = (Math.Cos((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
+            
             /*
                             double rest = time % OrbitalPeriod; // remove multiple orbits
                         double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
@@ -71,9 +70,6 @@ namespace SpaceSim
                                                                      //y = sin
             */
         }//END calculatePosition
-
-
-
 
         public virtual void Draw()
         {
@@ -93,8 +89,6 @@ namespace SpaceSim
             Console.Write("Star: ");
             Console.Write(Name);
             base.Draw();
-            
-
         }//END Draw
     }//END class Star
 
@@ -110,7 +104,6 @@ namespace SpaceSim
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
-
         }//END Draw
     }//END class Planet
 
@@ -128,7 +121,6 @@ namespace SpaceSim
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
-
         }//END Draw
     }//END class Moon
 
@@ -144,7 +136,6 @@ namespace SpaceSim
             Console.Write(Name);
             Console.Write(" Orbits:" + Orbits.Name);
             base.Draw();
-
         }//END Draw
     }//END class DwarfPlanet
 

@@ -9,3 +9,10 @@ Assignment 3: Base logic. Holds and handles all objects.
 Assignment 4: GUI class. Handles printing and uppdating the visual GUI
 	SpaceSimGUI: Responsible for the drawing context.
 	SpaceTimeController: handles the space-time
+
+	TODO: 
+	* Adjust planet orbit.
+	* Make planet view box
+	* Make object orbits.
+	* Give objects names
+	* Option for showing object data
