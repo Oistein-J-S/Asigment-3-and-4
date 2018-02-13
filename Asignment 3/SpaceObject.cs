@@ -55,7 +55,13 @@ namespace SpaceSim
             angle = ((time % orbitalPeriod) / orbitalPeriod)*360;
             double angleOfOrbit = (time % orbitalPeriod * Math.PI * 2) / orbitalPeriod;
             //double modifiedOrbitalRadius = Math.Log10(orbitalRadius);
-            modifiedOrbitalRadius = ((((500 - 50)*(orbitalRadius - 0))/(5913520 - 0))+ 50);
+            // from [min,max] 
+            int min = 0;
+            int max = 5913520;
+            //to [a,b]
+            int a = 25;
+            int b = 800;
+            modifiedOrbitalRadius = ((((b - a)*(orbitalRadius - min))/(max - min)) + a);
 
             //ScaledPos = OrbitPath modifyer * OrbitRadius Modifyer
             XPosScaled = (
