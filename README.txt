@@ -11,8 +11,7 @@ Assignment 4: GUI class. Handles printing and uppdating the visual GUI
 	SpaceTimeController: handles the space-time
 
 	TODO: 
-	* Adjust planet orbit.
 	* Make planet view box
-	* Make object orbits.
-	* Give objects names
 	* Option for showing object data
+	* Obit paths
+	* Adjust orbit speeds
