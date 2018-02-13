@@ -47,14 +47,22 @@ namespace Asigment_4
 
         private void drawOrbit(Graphics formGraphics, SpaceObject drawObject)
         {
-            int centerX = DisplayPanel.Width / 2;
-            int centerY = DisplayPanel.Height / 2;
-            double objRadius = drawObject.ModifiedOrbitalRadius;
-            System.Drawing.SolidBrush ellipseBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Rectangle ellipseRect = new Rectangle((int)(centerX - objRadius), (int)(centerY - objRadius), (int) (centerX + objRadius), (int) (centerY + objRadius));
-            Pen p = new Pen(ellipseBrush);
-            formGraphics.DrawEllipse(p, ellipseRect);
-            ellipseBrush.Dispose();
+            if (drawObject is SpaceSim.Planet || drawObject is SpaceSim.DwarfPlanet)
+            {
+                float objRadius = (float)drawObject.ModifiedOrbitalRadius;
+                float centerX = (float)(DisplayPanel.Width / 2);
+                float centerY = (float)(DisplayPanel.Height / 2);
+                // Rectangle ellipseRect = new Rectangle((int)(centerX - objRadius), (int)(centerY - objRadius), (int) (centerX + objRadius), (int) (centerY + objRadius));
+                Pen p = new Pen(new SolidBrush(Color.Black));
+                formGraphics.DrawEllipse(p, (centerX - objRadius), (centerY - objRadius), (objRadius * 2), (objRadius * 2));
+            }
+            
+        }
+
+        private void drawObjectsAndOrbits(Graphics formGraphics, SpaceObject drawObject)
+        {
+            drawOrbit(formGraphics, drawObject);
+            DrawSpaceObject(formGraphics, drawObject);
         }
 
         private void SolarSim_Resize(object sender, EventArgs e)
@@ -65,8 +73,7 @@ namespace Asigment_4
             formGraphics.Clear(System.Drawing.Color.White);
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
-                DrawSpaceObject(formGraphics, obj);
-                drawOrbit(formGraphics, obj);
+                drawObjectsAndOrbits(formGraphics, obj);
             }
             formGraphics.Dispose();
         }
@@ -111,6 +118,7 @@ namespace Asigment_4
             Rectangle ellipse = new Rectangle((int)(centerX - objRadius / 2), (int)(centerY - objRadius / 2), (int)objRadius, (int)objRadius);
             Pen p = new Pen(ellipseBrush);
             formGraphics.DrawEllipse(p, ellipse);
+            p.Dispose();
             ellipseBrush.Dispose();
         }
 
@@ -175,7 +183,7 @@ namespace Asigment_4
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 obj.CalculatePosition(_ticks);
-                DrawSpaceObject(formGraphics, obj);
+                drawObjectsAndOrbits(formGraphics, obj);
                 //Console.WriteLine(obj.Name);
             }
             formGraphics.Dispose();
