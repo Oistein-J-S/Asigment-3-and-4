@@ -10,6 +10,7 @@ namespace SpaceSim
         private double objectRadius; //NA
         private double logObjectRadius;
         private double orbitalRadius; //OK
+        private double modifiedOrbitalRadius;
         private double orbitalPeriod; //OK
         private String color;
         private double xPos;
@@ -21,6 +22,7 @@ namespace SpaceSim
     
         public double OrbitalPeriod { get => orbitalPeriod; set => orbitalPeriod = value; }
         public double OrbitalRadius { get => orbitalRadius; set => orbitalRadius = value; }
+        public double ModifiedOrbitalRadius { get => modifiedOrbitalRadius; set => modifiedOrbitalRadius = value; }
         public double ObjectRadius { get => objectRadius; set => objectRadius = value; }
         public SpaceObject Orbits { get => orbits; set => orbits = value; }
         public string Name { get => name; set => name = value; }
@@ -51,14 +53,22 @@ namespace SpaceSim
                 (int)(Math.Sin(time * orbitalPeriod * Math.PI / 180) * orbitalRadius);
 
             angle = ((time % orbitalPeriod) / orbitalPeriod)*360;
-            //YPosScaled = (Math.Sin((time%orbitalPeriod)/orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius),2)*600;
-            //XPosScaled = (Math.Cos((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius), 2)*600;
+            double angleOfOrbit = (time % orbitalPeriod * Math.PI * 2) / orbitalPeriod;
+            //double modifiedOrbitalRadius = Math.Log10(orbitalRadius);
+            modifiedOrbitalRadius = ((((500 - 50)*(orbitalRadius - 0))/(5913520 - 0))+ 50);
+
             //ScaledPos = OrbitPath modifyer * OrbitRadius Modifyer
-            YPosScaled = (Math.Sin((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
-            XPosScaled = (Math.Cos((time % orbitalPeriod * Math.PI*2) / orbitalPeriod) * Math.Log10(orbitalRadius))*50;
-            
+            XPosScaled = (
+                Math.Cos(angleOfOrbit) 
+                * modifiedOrbitalRadius
+                );
+            YPosScaled = (
+               Math.Sin(angleOfOrbit)
+               * modifiedOrbitalRadius
+               );
+
             /*
-                            double rest = time % OrbitalPeriod; // remove multiple orbits
+                        double rest = time % OrbitalPeriod; // remove multiple orbits
                         double relativeTime = rest / OrbitalPeriod; // find % value of completed orbit 
                         double orbitalDegrees = (double)relativeTime * 360; //multiply by 360 to find degrees moved.
                         orbitalDegrees = orbitalDegrees * (Math.PI / 180); //Convert degrees to radians
@@ -69,6 +79,9 @@ namespace SpaceSim
                                                                      //x = cos
                                                                      //y = sin
             */
+
+            //YPosScaled = (Math.Sin((time%orbitalPeriod)/orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius),2)*600;
+            //XPosScaled = (Math.Cos((time % orbitalPeriod) / orbitalPeriod) * Math.PI*2 ) * Math.Pow(Math.Log10(orbitalRadius), 2)*600;
         }//END calculatePosition
 
         public virtual void Draw()
