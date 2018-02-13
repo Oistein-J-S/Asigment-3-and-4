@@ -52,14 +52,15 @@ namespace Asigment_4
                 float objRadius = (float)drawObject.ModifiedOrbitalRadius;
                 float centerX = (float)(DisplayPanel.Width / 2);
                 float centerY = (float)(DisplayPanel.Height / 2);
-                // Rectangle ellipseRect = new Rectangle((int)(centerX - objRadius), (int)(centerY - objRadius), (int) (centerX + objRadius), (int) (centerY + objRadius));
-                Pen p = new Pen(new SolidBrush(Color.Black));
+                Pen p = new Pen(new SolidBrush(Color.Black), 1.5f);
+                p.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
                 formGraphics.DrawEllipse(p, (centerX - objRadius), (centerY - objRadius), (objRadius * 2), (objRadius * 2));
+                p.Dispose();
             }
             
         }
 
-        private void drawObjectsAndOrbits(Graphics formGraphics, SpaceObject drawObject)
+        private void drawSystem(Graphics formGraphics, SpaceObject drawObject)
         {
             drawOrbit(formGraphics, drawObject);
             DrawSpaceObject(formGraphics, drawObject);
@@ -67,13 +68,12 @@ namespace Asigment_4
 
         private void SolarSim_Resize(object sender, EventArgs e)
         {
-            //TODO draw out into "drawSystem" method?
             System.Drawing.Graphics formGraphics;
             formGraphics = DisplayPanel.CreateGraphics();
             formGraphics.Clear(System.Drawing.Color.White);
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
-                drawObjectsAndOrbits(formGraphics, obj);
+                drawSystem(formGraphics, obj);
             }
             formGraphics.Dispose();
         }
@@ -183,7 +183,7 @@ namespace Asigment_4
             foreach (SpaceSim.SpaceObject obj in ast.SolarSystem)
             {
                 obj.CalculatePosition(_ticks);
-                drawObjectsAndOrbits(formGraphics, obj);
+                drawSystem(formGraphics, obj);
                 //Console.WriteLine(obj.Name);
             }
             formGraphics.Dispose();
