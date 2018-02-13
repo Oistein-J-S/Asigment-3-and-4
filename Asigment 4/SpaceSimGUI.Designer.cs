@@ -37,6 +37,8 @@
             this.drawSolarSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startSimulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.fasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DisplayPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +79,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadDataToolStripMenuItem,
             this.drawSolarSystemToolStripMenuItem,
-            this.startSimulationToolStripMenuItem});
+            this.startSimulationToolStripMenuItem,
+            this.fasterToolStripMenuItem,
+            this.slowerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1091, 24);
@@ -109,6 +113,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // fasterToolStripMenuItem
+            // 
+            this.fasterToolStripMenuItem.Name = "fasterToolStripMenuItem";
+            this.fasterToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.fasterToolStripMenuItem.Text = "Faster";
+            this.fasterToolStripMenuItem.Click += new System.EventHandler(this.fasterToolStripMenuItem_Click);
+            // 
+            // slowerToolStripMenuItem
+            // 
+            this.slowerToolStripMenuItem.Name = "slowerToolStripMenuItem";
+            this.slowerToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.slowerToolStripMenuItem.Text = "Slower";
+            this.slowerToolStripMenuItem.Click += new System.EventHandler(this.slowerToolStripMenuItem_Click);
+            // 
             // SolarSim
             // 
             this.AccessibleName = "SolarSim";
@@ -139,6 +157,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label LabelDay;
         private System.Windows.Forms.Label LabelDayCounter;
+        private System.Windows.Forms.ToolStripMenuItem fasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem slowerToolStripMenuItem;
     }
 }
 

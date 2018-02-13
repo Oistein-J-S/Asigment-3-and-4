@@ -125,7 +125,7 @@ namespace Asigment_4
 
 
         // Finds objects on screen x position
-        public int GetAbsoluteX(SpaceSim.SpaceObject obj)
+        private int GetAbsoluteX(SpaceSim.SpaceObject obj)
         {
             if (obj is SpaceSim.Star)
             { // if object is star: return center of drawing space
@@ -158,6 +158,7 @@ namespace Asigment_4
 
         private void startSimulationToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(timer1.Interval);
             if (!started)
             {
                 timer1.Start();
@@ -191,6 +192,22 @@ namespace Asigment_4
             LabelDayCounter.Text = _ticks.ToString();
 
 
+        }
+
+        private void fasterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //GO FASTA!
+            if (timer1.Interval > 10) {  
+                timer1.Interval = (timer1.Interval - 10);
+                Console.WriteLine(timer1.Interval);
+            }
+        }
+
+        private void slowerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // GO SLOWA!
+            timer1.Interval = (timer1.Interval + 10);
+            Console.WriteLine(timer1.Interval);
         }
     }
 }
